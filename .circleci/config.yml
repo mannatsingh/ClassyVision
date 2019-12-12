@@ -79,7 +79,7 @@ jobs:
       - run:
         name: Git testing
         command: |
-	  git status
+          git status
           git remote -v
           git branch -v
 
