@@ -87,9 +87,6 @@ jobs:
             git status
             git remote -v
             git branch -v
-            echo $("git diff --name-only master | grep '\.py$' | tr '\n' ' '")
-            grep a .
-            tr
 
       - <<: *install_python
 
