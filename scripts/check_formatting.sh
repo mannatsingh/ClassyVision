@@ -4,12 +4,25 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
-set -x
-
 cd "$(dirname "$0")/.." || exit 1
 
 CMD="black"
-CHANGED_FILES="$(git diff --name-only master | grep '\.py$' | tr '\n' ' ')"
+UPSTREAM_URL="$(git config remote.upstream.url)"
+if [ -z "$UPSTREAM_URL" ]
+then
+    echo "Setting upstream remote"
+    git remote add upstream https://github.com/facebookresearch/ClassyVision.git
+elif [ ! "$UPSTREAM_URL" == "https://github.com/facebookresearch/ClassyVision.git" ] && \
+     [ ! "$UPSTREAM_URL" == "git@github.com:facebookresearch/ClassyVision.git" ]
+then
+    echo "upstream remote set to $UPSTREAM_URL. Exiting"
+    exit 1
+fi
+
+# fetch upstream
+git fetch upstream
+
+CHANGED_FILES="$(git diff --name-only upstream/master | grep '\.py$' | tr '\n' ' ')"
 
 while getopts bs opt; do
   case $opt in
