@@ -12,8 +12,8 @@ if [ -z "$UPSTREAM_URL" ]
 then
     echo "Setting upstream remote"
     git remote add upstream https://github.com/facebookresearch/ClassyVision.git
-elif [ ! "$UPSTREAM_URL" == "https://github.com/facebookresearch/ClassyVision.git" ] && \
-     [ ! "$UPSTREAM_URL" == "git@github.com:facebookresearch/ClassyVision.git" ]
+elif [ "$UPSTREAM_URL" -ne "https://github.com/facebookresearch/ClassyVision.git" ] && \
+     [ "$UPSTREAM_URL" -ne "git@github.com:facebookresearch/ClassyVision.git" ]
 then
     echo "upstream remote set to $UPSTREAM_URL. Exiting"
     exit 1
