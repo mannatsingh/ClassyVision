@@ -37,9 +37,7 @@ Example:
         $ ./classy_train.py --help
 """
 
-import c
-
-a =
+import z
 
 import logging
 import os
