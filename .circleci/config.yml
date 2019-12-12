@@ -76,6 +76,13 @@ jobs:
     steps:
       - checkout
 
+      - run:
+        name: Git testing
+        command: |
+	  git status
+          git remote -v
+          git branch -v
+
       - <<: *install_python
 
       - <<: *setup_venv
@@ -174,4 +181,3 @@ workflows:
   build_and_test:
     jobs:
       - cpu_tests
-      - gpu_tests
