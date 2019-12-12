@@ -82,6 +82,7 @@ jobs:
           git status
           git remote -v
           git branch -v
+          git diff master
 
       - <<: *install_python
 
