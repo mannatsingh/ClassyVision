@@ -82,6 +82,8 @@ jobs:
           name: Git testing
           command: |
             set -x
+            set +e
+            set +eo pipefail
             git status
             git remote -v
             git branch -v
