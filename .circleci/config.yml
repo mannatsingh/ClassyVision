@@ -87,6 +87,8 @@ jobs:
             git status
             git remote -v
             git branch -v
+            OUT="$(git diff --name-only master)"
+            echo $OUT
 
       - <<: *install_python
 
