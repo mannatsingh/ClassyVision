@@ -8,7 +8,6 @@
 # required by the package are installed
 
 # cd to the project directory
-# this is needed for isort to work as expected
 cd "$(dirname "$0")/.." || exit 1
 
 GIT_URL_1="https://github.com/facebookresearch/ClassyVision.git"
