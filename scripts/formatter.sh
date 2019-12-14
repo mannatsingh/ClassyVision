@@ -5,13 +5,11 @@
 # LICENSE file in the root directory of this source tree.
 
 # NOTE: isort should be run in a Python enironment where all the packages
-# required by the package are installed and the project isn't in the
-# directory where isort is being called from. We fix the latter in the following
-# lines
+# required by the package are installed
 
-# cd to the scripts directory
+# cd to the project directory
 # this is needed for isort to work as expected
-cd "$(dirname "$0")/" || exit 1
+cd "$(dirname "$0")/.." || exit 1
 
 GIT_URL_1="https://github.com/facebookresearch/ClassyVision.git"
 GIT_URL_2="git@github.com:facebookresearch/ClassyVision.git"
@@ -33,9 +31,7 @@ fi
 # fetch upstream
 git fetch upstream
 
-CHANGED_FILES="$(git diff --name-only upstream/master | grep '\.py$')"
-# add ../ to all the files and remove newlines
-CHANGED_FILES="$(echo "$CHANGED_FILES" | sed 's/^/..\//' | tr '\n' ' ')"
+CHANGED_FILES="$(git diff --name-only upstream/master | grep '\.py$' | tr '\n' ' ')"
 
 if [ "$CHANGED_FILES" != "" ]
 then
@@ -51,7 +47,7 @@ then
     fi
 
     # run isort
-    cmd="isort $CHANGED_FILES"
+    cmd="isort --thirdparty classy_vision $CHANGED_FILES"
     echo "Running command \"$cmd\""
     ($cmd)
 
