@@ -4,9 +4,6 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
-# NOTE: isort should be run in a Python enironment where all the packages
-# required by the package are installed
-
 # cd to the project directory
 cd "$(dirname "$0")/.." || exit 1
 
@@ -46,7 +43,7 @@ then
     fi
 
     # run isort
-    cmd="isort --thirdparty classy_vision $CHANGED_FILES"
+    cmd="isort --thirdparty classy_vision --thirdparty torchelastic $CHANGED_FILES"
     echo "Running command \"$cmd\""
     ($cmd)
 
