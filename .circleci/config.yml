@@ -98,6 +98,12 @@ jobs:
 
       - <<: *install_dev_dep
 
+      - run:
+          name: isort everything
+          command: |
+            isort --thirdparty classy_vision --thirdparty torchelastic -rc .
+            git --no-pager diff
+
       - <<: *run_tests
 
       - run:
