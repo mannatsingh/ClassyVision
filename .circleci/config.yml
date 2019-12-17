@@ -101,7 +101,7 @@ jobs:
       - run:
           name: isort everything
           command: |
-            isort --thirdparty classy_vision torchelastic visdom tensorboardX progressbar -rc .
+            isort -o classy_vision -o torchelastic -o visdom -o tensorboardX -o progressbar -rc .
             git --no-pager diff
 
       - <<: *run_tests
